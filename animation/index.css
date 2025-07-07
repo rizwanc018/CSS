@@ -1,0 +1,41 @@
+div {
+    animation-name: shrink;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-play-state: paused;
+    animation-fill-mode: forwards;
+
+  }
+
+  :checked ~ div {
+    animation-play-state: running;
+  }
+  
+
+  @keyframes shrink {
+    to {
+      transform: scale(0.5);
+    }
+  }
+  
+  @keyframes spin {
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes squarePath {
+    0%, 100% {
+      transform: translate(-100%, -100%);
+    }
+    25% {
+      transform: translate(100%, -100%);
+    }
+    50% {
+      transform: translate(100%, 100%);
+    }
+    75% {
+      transform: translate(-100%, 100%);
+    }
+  }

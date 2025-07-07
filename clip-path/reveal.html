@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Reveal</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                background: hsl(0, 0%, 10%);
+            }
+
+            .banner {
+                height: 80px;
+                display: flex;
+                align-items: center;
+                padding: 0 2rem;
+                background: hsl(0, 25%, 50%);
+                position: fixed;
+                animation: growIn 1s;
+                clip-path: inset(0 0 0 0);
+                /*  */
+                transform: rotate(calc(var(--rotate, 0) * 1deg)) scaleX(1);
+            }
+
+            .banner--horizontal {
+                --clip: inset(0 0 0 100%);
+                width: 100vw;
+                justify-content: flex-end;
+                bottom: 0;
+                left: 0;
+                padding-right: 200px;
+                /* transform-origin: 100% 100%; */
+            }
+
+            .banner--vertical {
+                --rotate: -90;
+                --clip: inset(0 100% 0 0);
+                position: fixed;
+                left: 100%;
+                bottom: 0;
+                width: 100vh;
+                transform-origin: 0 100%;
+                padding-left: 200px;
+                transform: rotate(-90deg) scaleX(1);
+            }
+
+            @keyframes growIn {
+                from {
+                    clip-path: var(--clip);
+                }
+            }
+
+            .info {
+                font-size: 2rem;
+                font-weight: bold;
+                color: hsl(0, 0%, 100%);
+                white-space: nowrap;
+            }
+
+            .info ~ .info {
+                margin-left: 2rem;
+            }
+
+            .avatar {
+                position: fixed;
+                height: 150px;
+                width: 150px;
+                border-radius: 50%;
+                background: hsl(0, 0%, 100%);
+                border: 10px solid hsl(0, 25%, 50%);
+                object-fit: contain;
+                bottom: 1rem;
+                right: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="banner banner--vertical">
+            <div class="info">New Subscriber</div>
+        </div>
+        <div class="banner banner--horizontal">
+            <div class="info">@jh3yy</div>
+            <div class="info">jhey.dev</div>
+        </div>
+        <img class="avatar" src="https://assets.codepen.io/605876/avatar.png" />
+    </body>
+</html>

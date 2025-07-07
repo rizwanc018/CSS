@@ -1,0 +1,127 @@
+<!-- https://www.youtube.com/watch?v=UmzFk68Bwdk&list=PL4-IK0AVhVjO0Y6TRhQZI2hpZmZrLWlul -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            body {
+                background-color: #f3f4f6;
+                margin: 0;
+                padding: 0;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+
+            ::-webkit-scrollbar {
+                display: none;
+            }
+
+            .hero {
+                background-color: #2563eb;
+                color: white;
+                text-align: center;
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                font-weight: bold;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+                margin-top: 16px;
+            }
+
+            .container {
+                max-width: 56rem;
+                margin: 0 auto;
+                padding: 40px 0;
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .section {
+                background-color: white;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 24px;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 16px;
+            }
+
+            .section img {
+                width: 100%;
+                border-radius: 8px;
+                margin-bottom: 16px;
+            }
+
+            .section p {
+                color: #4b5563;
+            }
+
+            .scroll-watcher {
+                height: 10px;
+                position: fixed;
+                top: 0;
+                z-index: 1000;
+                background-color: hsl(218, 85%, 3%);
+                border-top: none;
+                width: 100%;
+                transform-origin: left;
+                scale: 0 1;
+                animation: scroll-watcher linear;
+                animation-timeline: scroll();
+            }
+
+            @keyframes scroll-watcher {
+                to {
+                    scale: 1 1;
+                }
+            }
+        </style>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Page progress bar</title>
+    </head>
+    <body>
+        <div class="scroll-watcher"></div>
+        <section class="hero">
+            <h1>Welcome to Our Website</h1>
+            <p>Discover amazing content and insights</p>
+        </section>
+
+        <div class="container">
+            <div class="section">
+                <h2>Section 1</h2>
+                <img src="https://picsum.photos/id/57/800/400" alt="Placeholder" />
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+            </div>
+            <div class="section">
+                <h2>Section 2</h2>
+                <img src="https://picsum.photos/id/53/800/400" alt="Placeholder" />
+                <p>Suspendisse potenti. Mauris euismod, felis et tincidunt tincidunt.</p>
+            </div>
+            <div class="section">
+                <h2>Section 3</h2>
+                <img src="https://picsum.photos/id/58/800/400" alt="Placeholder" />
+                <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+            </div>
+            <div class="section">
+                <h2>Section 4</h2>
+                <img src="https://picsum.photos/id/71/800/400" alt="Placeholder" />
+                <p>Donec sollicitudin molestie malesuada. Pellentesque in ipsum.</p>
+            </div>
+            <div class="section">
+                <h2>Section 5</h2>
+                <img src="https://picsum.photos/id/16/800/400" alt="Placeholder" />
+                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+            </div>
+        </div>
+    </body>
+</html>

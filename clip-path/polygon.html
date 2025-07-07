@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Polygon</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                min-height: 100vh;
+                display: grid;
+                place-items: center;
+                background: hsl(0, 0%, 5%);
+            }
+
+            img {
+                object-fit: cover;
+                height: 50vmin;
+                width: 50vmin;
+                filter: brightness(1.2);
+                /* clip-path: inset(0% 0% 0% 0%); */
+                clip-path: polygon(100% 0, 20% 50%, 35% 50%, 0% 100%, 70% 50%, 50% 50%, 65% 70%);
+                /* clip-path: polygon(100% 0, 20% 50%, 35% 50%, 0% 100%, 70% 50%, 50% 50%); */
+            }
+            div{
+                border: 1px solid white;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <img
+                src="https://images.unsplash.com/photo-1609755581896-3a96267c06c8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=2000&ixid=MXwxfDB8MXxyYW5kb218fHx8fHx8fA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=2000"
+                alt=""
+                srcset=""
+            />
+        </div>
+    </body>
+</html>

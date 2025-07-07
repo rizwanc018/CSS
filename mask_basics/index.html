@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mask</title>
+        <style>
+            body {
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f0f0f0;
+            }
+            /* .container {
+                border: 2px solid black; 
+            } */
+            .square {
+                width: 400px;
+                height: 400px;
+                background: linear-gradient(135deg, #ff00008a, #ffff00a1, #00800088);
+                mask: linear-gradient(to bottom, #000 40%, transparent);
+
+                /* mask: linear-gradient(45deg, #000 25%, #0000 25% 50%, #000 50% 75%, #0000 75% 100%);
+                mask-size: 50%; */
+
+                /* background: linear-gradient(135deg, #264de4, #2965f1, #33a9dc); */
+                /* mask-image: url("CSS3.svg");
+                mask-size: cover;
+                mask-position: center; */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="square"></div>
+        </div>
+    </body>
+</html>

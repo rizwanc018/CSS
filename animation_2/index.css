@@ -1,0 +1,23 @@
+div {
+    animation-delay: 0s, 0.5s;
+    animation-duration: 0.5s, 0.75s;
+    animation-fill-mode: forwards;
+    animation-name: flyIn, rotate;
+}
+/* div {
+    animation-delay: 0s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-name: flyIn;
+} */
+@keyframes flyIn {
+    from {
+        opacity: 0;
+        transform: translateY(300%) scale(0);
+    }
+}
+@keyframes rotate {
+    to {
+        transform: rotate(45deg);
+    }
+}
