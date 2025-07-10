@@ -1,0 +1,96 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background-color: black;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    place-items: center;
+    gap: 10px;
+    border: 2px solid green;
+}
+
+.parent-element {
+    display: flex;
+    align-items: center;
+    border: 5px dashed #ffffff31;
+    width: fit-content;
+    gap: 10px;
+    border-radius: 50px;
+}
+
+.parent-element > div {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
+.ghost {
+    background-color: transparent;
+    border: 2px dashed #ffffff91;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.violet {
+    background-color: violet;
+}
+
+.green {
+    background-color: green;
+}
+
+/* Change the color of the border when the parent element has a violet child */
+:has(> .violet) {
+    border-color: white;
+}
+
+/* Change border color of next sibling of parent, which has violet child */
+/* :has(.violet) + div {
+    border-color: white;
+} */
+
+/* Change border color of preceding sibling of parent, which has green child */
+/* :has(+ * .green) {
+    border-color: white;
+} */
+
+/* Change bg color of parent, which has direct violet child */
+:has(> .violet) {
+    background-color: white;
+}
+
+/* Change bg color of all children of parent, which has violet child */
+/* :has(> .violet) > * {
+    background-color: black;
+} */
+
+/* Change bg color of all children of parent except violet, which has violet child */
+:has(> .violet) > *:not(.violet) {
+    background-color: black;
+}
+
+/* Select parent which has only four or more children */
+:has(:nth-child(4)) {
+    border-color: white;
+}
+
+/* Select parent which has only four children */
+:has(:nth-child(4):last-child) {
+    border-color: white;
+}
+
+/* select second type(here div) which has green class */
+/* .green:nth-of-type(2) {
+    outline: 5px dotted lime;
+} */
+
+/* select second green child */
+:nth-child(2 of .green) {
+    outline: 5px dotted orange;
+}

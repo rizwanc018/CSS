@@ -1,0 +1,64 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background-color: black;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    place-items: center;
+    gap: 10px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    border: 5px dashed #ffffff31;
+    width: fit-content;
+    gap: 10px;
+}
+
+.num {
+    width: 100px;
+    height: 100px;
+    color: white;
+    font-size: 100px;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Change border color of parent, which has child .three */
+/* :has(> .three) {
+    border-color: white;
+} */
+
+
+/* Change border color of all preceding siblings of parent */
+/* :has(~ * .five) {
+    border-color: white;
+} */
+
+/* Change border color of all next sibling of parent*/
+/* :has(.one) ~ * {
+    border-color: white;
+} */
+
+
+/* Change background color and color of all children except five of parent */
+/* :has(> .five) > *:not(.five) {
+    background-color: white;
+} */
+
+/* Select parent which has only four or more children */
+/* :has(:nth-child(3)) {
+    border-color: white;
+} */
+
+/* Select parent which has only four children */
+/* :has(:nth-child(3):last-child) {
+    border-color: white;
+} */
