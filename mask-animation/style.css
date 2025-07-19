@@ -1,0 +1,39 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: relative;
+    background-image: url("/2.jpg");
+    background-size: cover;
+}
+
+div {
+    position: absolute;
+    inset: 0;
+    background-color: rgb(0, 0, 0);
+}
+
+.mask {
+    mask-image: url("/mask2.png");
+    mask-size: 4900% 100%;
+    mask-border-width: 100px;
+    mask-position: 0% 0%;
+    animation: img-animation 3.7s steps(48) infinite;
+    /* mask-repeat: no-repeat; */
+}
+
+@keyframes img-animation {
+    50% {
+        mask-position: 100% 0%;
+    }
+    85% {
+        mask-position: 0% 0%;
+    }
+    100% {
+        mask-position: 0% 0%;
+    }
+}
