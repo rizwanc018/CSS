@@ -1,0 +1,41 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+div {
+    width: 800px;
+    padding-block: 20px;
+    padding-inline: 60px;
+    background-color: rgb(17, 17, 17);
+    border-radius: 40px;
+    display: flex;
+}
+
+.avatar {
+    border: 6px solid rgb(17, 17, 17);
+    width: 75px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    margin-inline: -18px;
+    position: relative;
+    transition: transform .5s ease-in-out;
+}
+
+.avatar:hover {
+    transform: translatex(-35%) scale(1.5);
+}
