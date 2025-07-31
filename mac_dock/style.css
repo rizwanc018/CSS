@@ -16,18 +16,59 @@ body {
     position: relative;
 }
 
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+
 .dock {
     position: absolute;
     border-radius: 1rem;
     bottom: 1rem;
+
     left: 50%;
     transform: translateX(-50%);
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.15));
     box-shadow: rgba(255, 255, 255, 0.17) 0px 0px 0px 1px inset;
     display: flex;
     gap: 0;
-    /* gap: 0.8rem;
-    padding-inline: 0.8rem; */
+    padding: 0.8rem;
+    /* gap: 0.8rem; */
+    /* padding-inline: 0.8rem; */
+}
+
+span {
+    width: 50px;
+    height: 50px;
+    display: block;
+    border-radius: 8px;
+}
+
+.one {
+    background: linear-gradient(135deg, #5cff3c, #f45d48, #d7263d, #3f88c5, #1e2a78);
+}
+.two {
+    background: linear-gradient(135deg, #1e2a78, #ff8e3c, #f45d48, #d7263d, #3f88c5);
+}
+.three {
+    background: linear-gradient(135deg, #3f88c5, #ff8e3c, #f45d48, #2641d7, #78421e);
+}
+.four {
+    background: linear-gradient(135deg, #d7263d, #ffeb3c, #f45d48, #3f88c5, #1e2a78);
+}
+.five {
+    background: linear-gradient(135deg, #f45d48, #ff8e3c, #d7263d, #3f88c5, #1e2a78);
+}
+.six {
+    background: linear-gradient(135deg, #f45d48, #d7263d, #3fc53f, #1e2a78, #ff8e3c);
+}
+.seven {
+    background: linear-gradient(135deg, #c4ff3c, #d7263d, #3f88c5, #782c1e, #f45d48);
+}
+.eight {
+    background: linear-gradient(135deg, #ff8e3c, #f45d48, #ba3fc5, #1e2a78, #d7263d);
 }
 
 a,
@@ -42,49 +83,37 @@ img {
 }
 
 .box,
-img {
+span {
     transition: all ease 100ms;
 }
 
 .box {
     display: block;
-    /* transition: transform ease-in-out 100ms; */
-    /* border: 2px solid red; */
-}
-
-.box img {
-    width: 60px;
-    height: 69px;
-}
-
-/* .dock:hover {
-    gap: 1rem;
-    padding-inline: 1rem;
-} */
-
-.box:hover > img {
-    transform: scale(1.4) translateY(-25px);
-    padding-inline: 0.7rem;
-}
-
-.box:hover ~ .box > img,
-.box:has(~ .box:hover) img {
     padding-inline: 0.3rem;
 }
 
+.box:hover > span {
+    transform: scale(1.4) translateY(-25px);
+    margin-inline: 0.7rem;
+}
 
-.box:hover + .box > img {
+.box:hover ~ .box > span,
+.box:has(~ .box:hover) span {
+    margin-inline: 0.3rem;
+}
+
+.box:hover + .box > span {
     transform: scale(1.2) translateY(-15px) translateX(5px);
 }
 
-.box:hover + .box + .box > img {
+.box:hover + .box + .box > span {
     transform: scale(1.1) translateY(-5px) translateX(5px);
 }
 
-.box:has(+ .box:hover) img {
+.box:has(+ .box:hover) span {
     transform: scale(1.2) translateY(-15px) translateX(-5px);
 }
 
-.box:has(+ .box + .box:hover) img {
+.box:has(+ .box + .box:hover) span {
     transform: scale(1.1) translateY(-5px) translateX(-5px);
 }
