@@ -17,7 +17,7 @@ body {
     background-color: #f0f0f0;
 }
 
-div {
+.container {
     width: 800px;
     padding-block: 20px;
     padding-inline: 60px;
@@ -26,16 +26,30 @@ div {
     display: flex;
 }
 
-.avatar {
+.avatar-container {
     border: 6px solid rgb(17, 17, 17);
     width: 75px;
     aspect-ratio: 1;
     border-radius: 100%;
     margin-inline: -18px;
     position: relative;
-    transition: transform .5s ease-in-out;
+    /* overflow: hidden; */
+    /* transition: transform .5s ease-in-out; */
+    transition: all 0.5s linear(0, 1 44.7%, 0.898 51.8%, 0.874 55.1%, 0.866 58.4%, 0.888 64.3%, 1 77.4%, 0.98 84.5%, 1);
 }
 
-.avatar:hover {
-    transform: translatex(-35%) scale(1.5);
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+    transition: transform 0.5s
+        linear(0, 1 44.7%, 0.898 51.8%, 0.874 55.1%, 0.866 58.4%, 0.888 64.3%, 1 77.4%, 0.98 84.5%, 1);
+}
+.avatar-container:hover {
+    border-color: transparent;
+}
+
+.avatar-container:hover .avatar {
+    transform: translateY(-100%) scale(1.5);
 }
