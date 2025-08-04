@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    background: #aaaaaa;
+}
+
+div {
+    border: 2px solid #fff;
+    color: rgba(0, 0, 255, 0.1);
+    /* background: radial-gradient(
+        circle 600px at calc(var(--x) * 1px) calc(var(--y) * 1px),
+        red 0%,
+        orange 14%,
+        yellow 28%,
+        lime 42%,
+        cyan 57%,
+        blue 71%,
+        indigo 85%,
+        violet 95%,
+        transparent 100%
+    ); */
+    background: repeating-radial-gradient(
+        circle 600px at calc(var(--x) * 1px) calc(var(--y) * 1px),
+        red 0%,
+        orange 14%,
+        yellow 28%,
+        lime 42%,
+        cyan 57%,
+        blue 71%,
+        indigo 85%,
+        violet 95%,
+        transparent 100%
+    );
+    background-clip: text;
+    background-attachment: fixed;
+}
+
+/* div:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle 100px at calc(var(--x) * 1px) calc(var(--y) * 1px),
+        yellow ,
+        green ,
+        purple ,
+        transparent
+    );
+    background-attachment: fixed;
+    transition: opacity 2s;
+    pointer-events: none;
+} */
+
+h1 {
+    line-height: 1.25cap;
+    font-size: 10vmin;
+}
