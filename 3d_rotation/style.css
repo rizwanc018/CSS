@@ -1,0 +1,58 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Poppins;
+    color: #1e1e1e;
+    background-color: #cdcdcd;
+    background-image: repeating-linear-gradient(to right, transparent 0 150px, #0001 150px 151px),
+        repeating-linear-gradient(to bottom, transparent 0 150px, #0001 150px 151px);
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.banner {
+    margin-top: -50px;
+    height: 100vh;
+    /* overflow: hidden; */
+    position: relative;
+    /* z-index: 1; */
+}
+.product {
+    --left: 330px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25%;
+    z-index: 2;
+    width: 300px;
+    transition: 0.7s;
+    display: flex;
+}
+
+.soda {
+    background: var(--url) var(--left) 0, url("images/soda_can.png");
+    background-size: auto 100%;
+    width: 280px;
+    aspect-ratio: 2/4;
+    background-blend-mode: multiply;
+    mask-image: url("images/soda_can.png");
+    mask-size: auto 100%;
+    transition: 0.3s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.soda:nth-child(2) {
+    opacity: 0;
+}
+
+.product:hover {
+    --left: -660px;
+    transform: translateX(-50%) translateY(-120px);
+}
+.product:hover .soda:nth-child(2) {
+    opacity: 1;
+}
