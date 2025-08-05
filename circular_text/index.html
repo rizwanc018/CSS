@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=B612+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            html,
+            body {
+                height: 100%;
+                width: 100%;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: "B612 Mono", serif;
+                font-weight: 600;
+            }
+            .text-ring {
+                position: relative;
+                text-transform: uppercase;
+            }
+            .text-ring [style*="--index"] {
+                --total: 30;
+                --character-width: 1;
+                --inner-angle: calc((360 / var(--total)) * 1deg);
+                --radius: calc((var(--character-width, 1) / sin(var(--inner-angle))) * -1ch);
+                font-size: 2rem;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(calc(360deg / var(--total) * var(--index)))
+                    translateY(calc(var(--radius)));
+            }
+
+            @media (prefers-reduced-motion: no-preference) {
+                .text-ringh {
+                    animation: spin 6s infinite linear;
+                }
+                @keyframes spin {
+                    to {
+                        rotate: 360deg;
+                    }
+                }
+            }
+        </style>
+        <title>Circular Text</title>
+    </head>
+    <body>
+        <span class="text-ring" style="--total: 15">
+            <span aria-hidden="true">
+                <span style="--index: 0">C</span>
+                <span style="--index: 1">i</span>
+                <span style="--index: 2">r</span>
+                <span style="--index: 3">c</span>
+                <span style="--index: 4">u</span>
+                <span style="--index: 5">l</span>
+                <span style="--index: 6">a</span>
+                <span style="--index: 7">r</span>
+                <span style="--index: 8"></span>
+                <span style="--index: 9">T</span>
+                <span style="--index: 10">e</span>
+                <span style="--index: 11">x</span>
+                <span style="--index: 12">t</span>
+                <span style="--index: 13">.</span>
+                <span style="--index: 14"></span>
+                <span style="--index: 15">C</span>
+                <span style="--index: 16">i</span>
+                <span style="--index: 17">r</span>
+                <span style="--index: 18">c</span>
+                <span style="--index: 19">u</span>
+                <span style="--index: 20">l</span>
+                <span style="--index: 21">a</span>
+                <span style="--index: 22">r</span>
+                <span style="--index: 23"></span>
+                <span style="--index: 24">T</span>
+                <span style="--index: 25">e</span>
+                <span style="--index: 26">x</span>
+                <span style="--index: 27">t</span>
+                <span style="--index: 28">.</span>
+                <span style="--index: 29"></span>
+            </span>
+        </span>
+    </body>
+</html>

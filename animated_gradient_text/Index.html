@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            main {
+                background-color: #f5f5f5;
+                width: 100vw;
+                height: calc(100vh - 2rem);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "Poppins", sans-serif;
+                font-weight: 200;
+                font-style: normal;
+                font-size: 18px;
+            }
+            .container {
+                width: 600px;
+                background: #e0e0e0;
+                border-radius: 25px;
+                position: relative;
+                overflow: hidden;
+                z-index: 20;
+            }
+
+            .content {
+                background: linear-gradient(#ffffff, white) padding-box transparent;
+                padding: 2rem;
+                border: 2px solid transparent;
+                border-radius: 25px;
+            }
+
+            .trail {
+                width: 200px;
+                aspect-ratio: 2 / 1;
+                position: absolute;
+                background: radial-gradient(100% 100% at right, #9136bb, transparent 50%);
+                offset-path: border-box;
+                offset-anchor: 100% 50%;
+                z-index: -1;
+                animation: trail var(--speed, 6s) infinite linear;
+            }
+
+            @keyframes trail {
+                to {
+                    offset-distance: 100%;
+                }
+            }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <div class="trail"></div>
+                <div class="content">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex provident unde eius
+                    recusandae tempora! Perspiciatis, impedit tenetur voluptates quis deleniti placeat, nam
+                    nihil alias iure illo eos, dolorum ullam possimus.
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

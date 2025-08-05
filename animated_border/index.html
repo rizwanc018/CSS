@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            main {
+                background-color: white;
+                width: 100vw;
+                height: calc(100vh - 2rem);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "Poppins", sans-serif;
+                font-weight: 200;
+                font-style: normal;
+                font-size: 18px;
+            }
+
+            .container {
+                width: 600px;
+                background: white;
+                border-radius: 30px;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 1px 1px 30px #e0e0e0;
+                padding: 2px;
+                z-index: 1;
+            }
+
+            .content {
+                padding: 2rem;
+                background: rgb(255, 255, 255) padding-box;
+                border-radius: 30px;
+                box-shadow: inset 2px 2px 30px #e6e5e5;
+            }
+
+            .trail {
+                width: 200px;
+                height: 100px;
+                position: absolute;
+                background: radial-gradient(100% 100% at right, #9136bb, transparent 65%);
+                offset-path: border-box;
+                offset-anchor: 100% 50%;
+                animation: trail 10s infinite linear;
+                z-index: -1;
+            }
+
+            @keyframes trail {
+                to {
+                    offset-distance: 100%;
+                }
+            }
+        </style>
+        <title>Animated Border</title>
+    </head>
+    <body>
+        <main>
+            <div class="container">
+                <div class="trail"></div>
+                <div class="content">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex provident unde eius
+                    recusandae tempora! Perspiciatis, impedit tenetur voluptates quis deleniti placeat, nam
+                    nihil alias iure illo eos, dolorum ullam possimus.
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
