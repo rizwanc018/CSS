@@ -1,0 +1,29 @@
+/* html {
+    color-scheme: dark;
+} */
+
+body {
+    background-color: black;
+    color: red;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+div {
+    --dir:  bottom;
+    padding: 3rem 4rem;
+    border: 13px solid transparent;
+    background: linear-gradient(canvas 0 0) padding-box,
+        linear-gradient(to var(--dir), red, green, blue) border-box;
+    background-size: 100% 200%;
+    background-position: top;
+    transition: background-position 0.5s ease-in-out;
+    border-radius: 100px;
+}
+
+div:hover {
+    background-position: bottom;
+}
