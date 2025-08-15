@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url("/bg.jpg");
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    padding: 16px ;
+    margin: 20px;
+    border-radius: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #007aff, #0a84ff);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+
+.container {
+    height: fit-content;
+    color: aliceblue;
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
+    border-radius: 10px;
+    position: absolute;
+    transition: opacity 0.26s ease-out;
+    border-radius: 28px;
+    filter: drop-shadow(-8px -10px 46px #0000005f);
+    backdrop-filter: brightness(1.1) blur(2px) url(#displacementFilter);
+}
+
+
+.container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 28px;
+    -webkit-box-shadow: inset 2px 2px 0px -2px rgba(255, 255, 255, 0.7), 
+                        inset 0 0 3px 1px rgba(255, 255, 255, 0.7);
+    box-shadow: inset 6px 6px 0px -6px rgba(255, 255, 255, 0.7), 
+                inset 0 0 8px 1px rgba(255, 255, 255, 0.7);
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+        <script src="script.js"></script>
+        <title>Ios-liquid-glass</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Liquid Glass</h1>
+        </div>
+        <svg style="display: none">
+            <filter id="displacementFilter">
+                <feTurbulence
+                    type="turbulence"
+                    baseFrequency="0.01"
+                    numOctaves="2"
+                    result="turbulence"
+                />
+
+                <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="turbulence"
+                    scale="90"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                />
+            </filter>
+        </svg>
+    </body>
+</html>
