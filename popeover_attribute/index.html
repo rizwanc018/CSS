@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>HTML Popover Attribute</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1> HTML Popover Attribute Examples</h1>
+
+            <div class="demo-section">
+                <h3># Popover (auto)</h3>
+                <p>
+                    Click the button to show a simple popover. It automatically closes when clicking outside.
+                </p>
+                <button popovertarget="basic-popover">Show</button>
+
+                <div id="basic-popover" popover="auto">
+                    <div class="popover-header">
+                        <h4 class="popover-title">Welcome!</h4>
+                    </div>
+                    <p class="border-b">
+                        This is a basic popover using the new HTML popover attribute. No JavaScript required!
+                        🎉.
+                    </p>
+                    <p>Press <kbd>Esc</kbd> or click <code>outside</code> to close.</p>
+                </div>
+
+                <div class="code-block">
+                    &lt;button popovertarget="basic-popover"&gt;Show Popover&lt;/button&gt; <br><br> &lt;div
+                    id="basic-popover" popover="auto"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Popover content here&lt;/p&gt; <br> &lt;/div&gt;
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h3># Popover (manual)</h3>
+                <p>
+                    This popover uses
+                    <span class="highlight">popover="manual"</span> - it won't close automatically when
+                    clicking outside.
+                </p>
+                <button popovertarget="manual-popover" popovertargetaction="show">Open</button>
+
+                <div id="manual-popover" popover="manual">
+                    <div class="popover-header">
+                        <h4 class="popover-title">Manual Popover</h4>
+                        <button class="close-btn" popovertarget="manual-popover" popovertargetaction="hide">
+                            &times;
+                        </button>
+                    </div>
+                    <p>
+                        This popover requires explicit show/hide actions. Perfect for important dialogs or
+                        confirmations!
+                    </p>
+                    <button
+                        popovertarget="manual-popover"
+                        popovertargetaction="hide"
+                        style="background: #ef4444"
+                    >
+                        Cancel
+                    </button>
+                </div>
+
+                <div class="code-block">
+                    &lt;button popovertarget="manual-popover"
+                    popovertargetaction="show"&gt;Open&lt;/button&gt; <br> &lt;button
+                    popovertarget="manual-popover" popovertargetaction="hide"&gt;Close&lt;/button&gt; <br><br> &lt;div
+                    id="manual-popover" popover="manual"&gt; <br>&nbsp;&nbsp;&nbsp;&nbsp; &lt;p&gt;Manual popover content&lt;/p&gt; <br> &lt;/div&gt;
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
