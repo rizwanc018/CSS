@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS anchor() with Popover Demo</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    sans-serif;
+                margin: 0;
+                padding: 40px;
+                background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+                min-height: 100vh;
+                color: #1a202c;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                background: rgba(255, 255, 255, 0.98);
+                border-radius: 24px;
+                padding: 50px;
+                backdrop-filter: blur(20px);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 10px;
+                background: linear-gradient(135deg, #2d1b69, #11998e);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                font-size: 3em;
+                font-weight: 800;
+                letter-spacing: -1px;
+            }
+
+            .subtitle {
+                text-align: center;
+                color: #718096;
+                margin-bottom: 50px;
+                font-size: 1.2em;
+                font-weight: 500;
+            }
+
+            .demo-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 35px;
+                margin-bottom: 40px;
+            }
+
+            .demo-section {
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(247, 250, 252, 0.9));
+                border-radius: 20px;
+                padding: 35px;
+                box-shadow: 0 15px 35px rgba(45, 27, 105, 0.08);
+                border: 1px solid rgba(45, 27, 105, 0.1);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .demo-section::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #2d1b69, #11998e);
+                border-radius: 20px 20px 0 0;
+            }
+
+            .demo-section:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 45px rgba(45, 27, 105, 0.12);
+            }
+
+            .demo-section h3 {
+                margin-top: 0;
+                color: #2d1b69;
+                font-size: 1.5em;
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            .demo-section p {
+                color: #4a5568;
+                line-height: 1.7;
+                margin-bottom: 25px;
+            }
+
+            .trigger-btn {
+                background: linear-gradient(135deg, #2d1b69, #11998e);
+                color: white;
+                border: none;
+                padding: 14px 28px;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 8px 25px rgba(45, 27, 105, 0.25);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .trigger-btn::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .trigger-btn:hover::before {
+                opacity: 1;
+            }
+
+            .trigger-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 35px rgba(45, 27, 105, 0.35);
+            }
+
+            .trigger-btn:active {
+                transform: scale(0.96) translateY(-1px);
+                transition: transform 0.2s ease;
+            }
+
+            /* Different anchor names for different buttons */
+            .btn-1 {
+                anchor-name: --anchor-1;
+            }
+            .btn-2 {
+                anchor-name: --anchor-2;
+            }
+            .btn-3 {
+                anchor-name: --anchor-3;
+            }
+            .btn-dropdown {
+                anchor-name: --dropdown-anchor;
+            }
+
+            .demo-popover {
+                position: absolute;
+                margin: 0;
+                padding: 25px;
+                background: rgba(255, 255, 255, 0.98);
+                border: 1px solid rgba(45, 27, 105, 0.15);
+                border-radius: 16px;
+                box-shadow: 0 20px 50px rgba(45, 27, 105, 0.15);
+                min-width: 280px;
+                max-width: 380px;
+                font-size: 14px;
+                line-height: 1.6;
+                z-index: 1000;
+                backdrop-filter: blur(20px);
+                animation: popoverIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            @keyframes popoverIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.9) translateY(-15px);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1) translateY(0);
+                }
+            }
+
+            .demo-popover::backdrop {
+                background: rgba(45, 27, 105, 0.1);
+                backdrop-filter: blur(4px);
+            }
+
+            .demo-popover h4 {
+                margin-top: 0;
+                color: #2d1b69;
+                font-size: 1.2em;
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            .demo-popover code {
+                background: rgba(45, 27, 105, 0.1);
+                padding: 3px 8px;
+                border-radius: 6px;
+                font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+                font-size: 12px;
+                color: #2d1b69;
+                font-weight: 500;
+            }
+
+            /* Anchor positioning styles */
+            .popover-1 {
+                position-anchor: --anchor-1;
+                top: anchor(bottom);
+                left: anchor(left);
+                margin-top: 12px;
+            }
+
+            .popover-2 {
+                position-anchor: --anchor-2;
+                bottom: anchor(top);
+                left: anchor(center);
+                transform: translateX(-50%);
+                margin-bottom: 12px;
+            }
+
+            .popover-3 {
+                position-anchor: --anchor-3;
+                top: anchor(center);
+                left: anchor(right);
+                transform: translateY(-50%);
+                margin-left: 12px;
+            }
+
+            /* Dropdown specific styles */
+            .dropdown-section {
+                background: linear-gradient(135deg, rgba(17, 153, 142, 0.1), rgba(45, 27, 105, 0.05));
+                border: 2px solid rgba(17, 153, 142, 0.2);
+                position: relative;
+            }
+
+            .dropdown-section::before {
+                background: linear-gradient(90deg, #11998e, #2d1b69);
+            }
+
+            .dropdown-popover {
+                position-anchor: --dropdown-anchor;
+                top: anchor(bottom);
+                left: anchor(left);
+                margin-top: 8px;
+                min-width: 240px;
+                padding: 0;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 15px 40px rgba(17, 153, 142, 0.2);
+            }
+
+            .dropdown-item {
+                padding: 14px 20px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                border-bottom: 1px solid rgba(45, 27, 105, 0.1);
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: #4a5568;
+                font-weight: 500;
+            }
+
+            .dropdown-item:last-child {
+                border-bottom: none;
+            }
+
+            .dropdown-item:hover {
+                background: linear-gradient(135deg, rgba(17, 153, 142, 0.1), rgba(45, 27, 105, 0.05));
+                color: #2d1b69;
+            }
+
+            .dropdown-item::before {
+                content: "→";
+                color: #11998e;
+                font-weight: bold;
+                transition: transform 0.2s ease;
+            }
+
+            .dropdown-item:hover::before {
+                transform: translateX(3px);
+            }
+
+            .code-section {
+                background: #1a202c;
+                color: #e2e8f0;
+                padding: 30px;
+                border-radius: 16px;
+                margin-top: 40px;
+                font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+                font-size: 14px;
+                line-height: 1.7;
+                overflow-x: auto;
+                border: 1px solid rgba(45, 27, 105, 0.2);
+            }
+
+            .code-section h4 {
+                color: #11998e;
+                margin-top: 0;
+                font-family: "SF Pro Display", sans-serif;
+                font-weight: 700;
+                font-size: 1.3em;
+                margin-bottom: 20px;
+            }
+
+            .highlight {
+                color: #11998e;
+                font-weight: 600;
+            }
+
+            .keyword {
+                color: #ed64a6;
+                font-weight: 600;
+            }
+
+            .string {
+                color: #fbd38d;
+            }
+
+            .comment {
+                color: #a0aec0;
+                font-style: italic;
+            }
+
+            @supports (anchor-name: --test) {
+                .support-message {
+                    background: linear-gradient(135deg, rgba(72, 187, 120, 0.1), rgba(56, 178, 172, 0.1));
+                    color: #2f855a;
+                    padding: 20px;
+                    border-radius: 12px;
+                    border: 1px solid rgba(72, 187, 120, 0.3);
+                    margin-bottom: 30px;
+                    font-weight: 500;
+                }
+            }
+
+            @supports not (anchor-name: --test) {
+                .no-support-message {
+                    background: linear-gradient(135deg, rgba(245, 101, 101, 0.1), rgba(237, 100, 166, 0.1));
+                    color: #c53030;
+                    padding: 20px;
+                    border-radius: 12px;
+                    border: 1px solid rgba(245, 101, 101, 0.3);
+                    margin-bottom: 30px;
+                    font-weight: 500;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>CSS anchor() with Popover</h1>
+            <p class="subtitle">Modern positioning for beautiful user interfaces</p>
+
+            <div class="support-message" style="display: none">
+                ✨ Excellent! Your browser supports CSS anchor positioning.
+            </div>
+            <div class="no-support-message" style="display: none">
+                ⚠️ CSS anchor positioning not supported. This demo shows the concept with fallback
+                positioning.
+            </div>
+
+            <div class="demo-grid">
+                <div class="demo-section">
+                    <h3>Bottom Left</h3>
+                    <p>
+                        Perfect for form hints, tooltips, and contextual information that appears below
+                        elements.
+                    </p>
+                    <button class="trigger-btn btn-1" popovertarget="popover1">Show Tooltip</button>
+
+                    <div id="popover1" popover class="demo-popover popover-1">
+                        <h4>💡 Bottom-Left Positioned</h4>
+                        <p>This popover uses:</p>
+                        <code>top: anchor(bottom);<br />left: anchor(left);</code>
+                        <p>
+                            Ideal for form validation messages and helpful hints that don't obstruct content
+                            above.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="demo-section">
+                    <h3>Right Side</h3>
+                    <p>Excellent for contextual panels, detailed information, and secondary content areas.</p>
+                    <button class="trigger-btn btn-3" popovertarget="popover3">Show Panel</button>
+
+                    <div id="popover3" popover class="demo-popover popover-3">
+                        <h4>📋 Right-Side Positioned</h4>
+                        <p>This popover uses:</p>
+                        <code
+                            >top: anchor(center);<br />left: anchor(right);<br />transform:
+                            translateY(-50%);</code
+                        >
+                        <p>
+                            Ideal for detailed information panels and contextual help that doesn't interfere
+                            with the main content flow.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="demo-section dropdown-section">
+                    <h3>Dropdown Menu</h3>
+                    <p>
+                        Classic dropdown pattern with smooth animations and perfect alignment using CSS anchor
+                        positioning.
+                    </p>
+                    <button class="trigger-btn btn-dropdown" popovertarget="dropdownMenu">Open Menu</button>
+
+                    <div id="dropdownMenu" popover class="demo-popover dropdown-popover">
+                        <div class="dropdown-item">Dashboard</div>
+                        <div class="dropdown-item">Profile Settings</div>
+                        <div class="dropdown-item">Team Management</div>
+                        <div class="dropdown-item">Analytics</div>
+                        <div class="dropdown-item">Billing & Usage</div>
+                        <div class="dropdown-item">Help & Support</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-section">
+                <pre><span class="comment">/* 1. Name your anchor element */</span>
+<span class="keyword">.trigger-btn</span> {
+  <span class="highlight">anchor-name</span>: <span class="string">--my-anchor</span>;
+}
+
+<span class="comment">/* 2. Position popover relative to anchor */</span>
+<span class="keyword">.popover</span> {
+  <span class="highlight">position-anchor</span>: <span class="string">--my-anchor</span>;
+  <span class="keyword">position</span>: <span class="string">absolute</span>;
+  
+  <span class="comment">/* Semantic positioning values */</span>
+  <span class="highlight">top</span>: <span class="string">anchor(bottom)</span>;     <span class="comment">/* Position below anchor */</span>
+  <span class="highlight">left</span>: <span class="string">anchor(left)</span>;      <span class="comment">/* Align to left edge */</span>
+  <span class="highlight">left</span>: <span class="string">anchor(center)</span>;    <span class="comment">/* Center horizontally */</span>
+  <span class="highlight">left</span>: <span class="string">anchor(right)</span>;     <span class="comment">/* Align to right edge */</span>
+}
+
+<span class="comment">/* 3. Dropdown menu example */</span>
+<span class="keyword">.dropdown</span> {
+  <span class="highlight">position-anchor</span>: <span class="string">--dropdown-anchor</span>;
+  <span class="highlight">top</span>: <span class="string">anchor(bottom)</span>;
+  <span class="highlight">left</span>: <span class="string">anchor(left)</span>;
+  <span class="keyword">margin-top</span>: <span class="string">8px</span>;
+}</pre>
+            </div>
+        </div>
+
+        <script>
+            // Check for CSS anchor positioning support
+            if (CSS.supports("anchor-name: --test")) {
+                document.querySelector(".support-message").style.display = "block";
+            } else {
+                document.querySelector(".no-support-message").style.display = "block";
+            }
+
+            // Add click handlers to dropdown items
+            document.querySelectorAll(".dropdown-item").forEach((item) => {
+                item.addEventListener("click", () => {
+                    // Close the dropdown
+                    document.getElementById("dropdownMenu").hidePopover();
+
+                    // Add some visual feedback
+                    item.style.background =
+                        "linear-gradient(135deg, rgba(17, 153, 142, 0.2), rgba(45, 27, 105, 0.1))";
+                    setTimeout(() => {
+                        item.style.background = "";
+                    }, 300);
+                });
+            });
+        </script>
+    </body>
+</html>
